@@ -1,0 +1,46 @@
+import math
+
+class Punkt2D:
+    def __init__(self, x, y): #metoda_magiczna_poniżej
+        self.x = x
+        self.y = y
+        self.odleglosc = math.sqrt(x**2 + y**2)
+
+    def __add__(self, drugi):
+        return Punkt2D(self.x + drugi.x, self.y + drugi.y)
+
+    def __sub__(self, drugi):
+        return Punkt2D(self.x - drugi.x, self.y - drugi.y)
+
+    def __lt__(self, other ):
+        return self.odleglosc < other.odleglosc
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == self.y
+
+    def __len__(self):
+        return int(round(self.odleglosc, 0))
+
+p1 = Punkt2D(2,5)
+p2 = Punkt2D(4,5)
+p3 = p1 + p2
+p4 = p2 - p1
+
+print(p3.x)
+print(p3.y)
+
+print(p4.x)
+print(p4.y)
+print(p1 < p2)
+print( p1 == p2)
+
+print(len(p3))
+#możlwiość porówniania dwóch obiektów
+
+
+
+    #__add__ - dodawanie
+    #__sub__ - odejmowanie
+    #__mul__ - mnozenie
+    #__dif__ - dielenie
+    #__lt__ - mnijesze od
