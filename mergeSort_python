@@ -1,0 +1,47 @@
+def sortowanie_MergeSort(tablica):
+    if len(tablica) > 1:
+
+        srodek_tablicy = len(tablica) // 2
+        prawa_strona = tablica[srodek_tablicy:]
+        lewa_strona = tablica[:srodek_tablicy]
+
+        sortowanie_MergeSort(prawa_strona)
+        sortowanie_MergeSort(lewa_strona)
+
+        a = 0
+        b = 0
+        c = 0
+
+        while a < len(lewa_strona) and b < len(prawa_strona):
+            if lewa_strona[a] < prawa_strona[b]:
+                tablica[c] = lewa_strona[a]
+                a = a + 1
+            else:
+                tablica[c] = prawa_strona[b]
+                b = b + 1
+            c = c + 1
+
+        while a < len(lewa_strona):
+            tablica[c] = lewa_strona[a]
+            a = a + 1
+            c = c + 1
+        while b < len(prawa_strona):
+            tablica[c] = prawa_strona[b]
+            b = b + 1
+            c = c + 1
+
+
+def wydrukuj_liste(tablica):
+    for i in range(len(tablica)):
+        print(tablica[i], end=", ")
+    print("___________")
+
+
+if __name__ == '__main__':
+    tablica = [14, 17, 19, 5, 7, 23, 8, 2, 1]
+    print(f"\n\t\tTablica nadana: {tablica}")
+    sortowanie_MergeSort(tablica)
+    print("\n\t\t ______PO-SORTOWANIU_____")
+    print("\n\t\t ________________________")
+    print(f"\n\t\tPoniżej mamy posortowaną tablicę")
+    print(f"\n\t\t {tablica}")
